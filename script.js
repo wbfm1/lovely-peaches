@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.querySelector('#video');
+    const text = document.querySelector('#text');
+    const overlay = document.querySelector('#overlay');
 
-    // Attempt to unmute and play the video for mobile users
-    video.play().then(() => {
-        // Video started playing
-        console.log('Video is playing');
-    }).catch(error => {
-        // Error handling (e.g. user needs to click to play)
-        console.log('Autoplay failed, user interaction required');
-        video.muted = false; // Ensure it's not muted if user interaction is required
+    // Set up event listener for user interaction
+    overlay.addEventListener('click', function() {
+        video.style.display = 'block'; // Show the video
+        text.style.display = 'block'; // Show the text
+        video.play(); // Play the video with sound
+        video.hidden = false; // Remove hidden attribute
+        overlay.style.display = 'none'; // Hide the overlay
     });
 
-    // Optional: Handle a click event to unmute video if needed
+    // Optional: Set up a fallback in case the video doesn't autoplay (i.e., needs to be started manually)
     video.addEventListener('click', function() {
-        if (video.muted) {
-            video.muted = false;  // Unmute video on click
-            video.play();         // Ensure video is playing
+        if (video.paused) {
+            video.play(); // Play the video on click if it’s paused
         }
     });
 });
