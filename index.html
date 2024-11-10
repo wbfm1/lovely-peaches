@@ -8,12 +8,20 @@
 </head>
 <body>
     <div class="video-container">
-        <video class="video" autoplay loop id="video" playsinline>
+        <!-- Video with hidden attribute initially -->
+        <video class="video" id="video" playsinline hidden>
             <source src="your-video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="text">
+        
+        <!-- Text with hidden attribute initially -->
+        <div class="text" id="text" hidden>
             <h1>яша мооо</h1>
+        </div>
+        
+        <!-- Overlay prompt -->
+        <div class="overlay" id="overlay">
+            <h2>цъкнете по екрана рак да ва хване я</h2>
         </div>
     </div>
     <script src="script.js"></script>
